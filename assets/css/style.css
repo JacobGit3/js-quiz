@@ -1,0 +1,47 @@
+:root{
+    --color1: #1f1c1c;
+    --color2: #9DD9D2;
+    --color3: #3F88C5;
+    --color4: #F2AF29;
+    --color5: #F07167;
+}
+
+body {
+    background: var(--color2);
+    margin: 0;
+    padding: 0;
+    font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'sans-serif';
+}
+
+header {
+    display: flex;
+}
+
+h2 {
+    font-size: 30px;
+    display: flex;
+    margin: 20px auto;
+    padding: 5px;
+}
+
+.highScore {
+    border: 5px var(--color1) solid;
+    border-radius: 15px;
+    background-color: var(--color1);
+    color: var(--color2);
+}
+
+.timer {
+    border: 5px var(--color1) solid;
+    border-radius: 15px;
+    color: var(--color5);
+    background-color: var(--color1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    border-bottom: 10px solid var(--color1);
+    font-style: bold;
+    color: var(--color1);
+}
