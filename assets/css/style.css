@@ -1,7 +1,7 @@
 :root{
     --color1: #1f1c1c;
     --color2: #9DD9D2;
-    --color3: #3F88C5;
+    --color3: #439ee9;
     --color4: #F2AF29;
     --color5: #F07167;
 }
@@ -28,13 +28,13 @@ h2 {
     border: 5px var(--color1) solid;
     border-radius: 15px;
     background-color: var(--color1);
-    color: var(--color2);
+    color: var(--color4);
 }
 
 .timer {
     border: 5px var(--color1) solid;
     border-radius: 15px;
-    color: var(--color5);
+    color: var(--color4);
     background-color: var(--color1);
 }
 
@@ -44,4 +44,30 @@ h1 {
     border-bottom: 10px solid var(--color1);
     font-style: bold;
     color: var(--color1);
+}
+
+.question {
+    text-align: center;
+    font-size: 40px;
+    color: var(--color1);
+    margin: 20px;
+    font-style: bold;
+    border-bottom: var(--color1) 3px solid;
+}
+
+.quizBox {
+    border: var(--color1) solid 10px;
+    border-radius: 30px;
+    background-color: var(--color4);
+    margin: 50px;
+}
+
+button {
+    width: 60%;
+    margin: 10px 20%;
+    font-size: 30px;
+    color: var(--color1);
+    border: 3px solid var(--color1);
+    border-radius: 5px;
+    background-color: var(--color3);
 }
