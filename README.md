@@ -1,4 +1,4 @@
-# js-quiz
+# js-quiz - week 4 homework assignment
 This is a java script based page for a basic quiz on javascript basics
 
 Upon Page load the user will see the highscore link tag, time timer, title, start button, and two sections for questions and higscores that will start with no content other than their titles.
