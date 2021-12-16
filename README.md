@@ -27,6 +27,8 @@ This is an image of the webpage on first load:
 
 ![first-load](./assets/images/first-load.png)
 
+This is an image of the active page during a quiz and with an entry for highscores
+![active-page](./assets/images/active-page.png)
 
 
 resources used:
