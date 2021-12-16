@@ -25,10 +25,10 @@ On reload of page after scores are saved the loadhighscore function will be call
 This is an image of the webpage on first load:
 
 
-![first-load](./assets/images/first-load.png)
+![first-load](./assets/images/first-load.PNG)
 
 This is an image of the active page during a quiz and with an entry for highscores
-![active-page](./assets/images/active-page.png)
+![active-page](./assets/images/active-page.PNG)
 
 
 resources used:
