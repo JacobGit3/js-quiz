@@ -7,18 +7,33 @@ var highscores = [];
 var highscoreCounter = 0;
 var timeLeft = "time";
 
-// Array
+// Array of questions, options and answers
 var questions = [
     {
-        prompt:"How can an HTML element be accessed in JavaScript?",
-        options:"(A) html.getElementByID()<br>(B) document.getElement()<br>(C) document.getElementById()<br>(D) index.access()",
-        answer:"C"
+        prompt: "How can an HTML element be accessed in JavaScript?",
+        options: "(A) html.getElementByID()<br>(B) document.getElement()<br>(C) document.getElementById()<br>(D) index.access()",
+        answer: "C"
     },
     {
         prompt: "What are variables used for in JavaScript?",
         options: "(A) Storing numbers, dates, or other values<br>(B) Varying randomly<br>(C)Causing high-school algebra flashbacks<br>(D) None of the above",
         answer: "A"
     },
+    {
+        prompt: "What type of image maps can be used with JavaScript?",
+        options: "(A) Server-side image maps<br>(B) Client-side image maps<br>(C) Server-side image maps and Client-side image maps<br>(D) None of the above",
+        answer: "B"
+    },
+    {
+        prompt: "Which of the following best describes JavaScrpt",
+        options: "(A) A low-level programming language<br>(B) A scripting language<br>(C) A compiled scripting language<br>(D) An object-oriented scripting language",
+        answer: "D"
+    },
+    {
+        prompt: "Which of the following is not considered a JavaScript operator?",
+        options: "(A) new<br>(B) this<br>(C) delete<br>(D) typeof",
+        answer: "B"
+    }
 ];
 
 // Add text on  and buttonInital page load
