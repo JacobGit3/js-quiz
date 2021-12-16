@@ -1,79 +1,174 @@
-var mainText = document.getElementById("question");
+// Global Variables
+var question = document.getElementById("question");
 var multiChoice = document.getElementById("responses");
-var answer = document.getElementById("answer");
-var submit = document.getElementById("submit")
+var score = 0;
+var i = 0;
+var highscores = [];
+var highscoreCounter = 0;
+var timeLeft = "time";
 
-// base text on startup
-var  baseText = document.createTextNode("Click below to start the quiz!");
-mainText.appendChild(baseText);
+// Array of questions, options and answers
+var questions = [
+    {
+        prompt: "How can an HTML element be accessed in JavaScript?",
+        options: "(A) html.getElementByID()<br>(B) document.getElement()<br>(C) document.getElementById()<br>(D) index.access()",
+        answer: "C"
+    },
+    {
+        prompt: "What are variables used for in JavaScript?",
+        options: "(A) Storing numbers, dates, or other values<br>(B) Varying randomly<br>(C)Causing high-school algebra flashbacks<br>(D) None of the above",
+        answer: "A"
+    },
+    {
+        prompt: "What type of image maps can be used with JavaScript?",
+        options: "(A) Server-side image maps<br>(B) Client-side image maps<br>(C) Server-side image maps and Client-side image maps<br>(D) None of the above",
+        answer: "B"
+    },
+    {
+        prompt: "Which of the following best describes JavaScrpt",
+        options: "(A) A low-level programming language<br>(B) A scripting language<br>(C) A compiled scripting language<br>(D) An object-oriented scripting language",
+        answer: "D"
+    },
+    {
+        prompt: "Which of the following is not considered a JavaScript operator?",
+        options: "(A) new<br>(B) this<br>(C) delete<br>(D) typeof",
+        answer: "B"
+    }
+];
 
-createbtn("START");
+// Add text on  and buttonInital page load
+var questionText = document.createElement("text");
+var optionsText = document.createElement("text");
+var startBtn = document.createElement("button");
+startBtn.innerHTML = "Start";
+startBtn.className = "start"
+questionText.innerHTML = "Click the start button!";
+document.getElementById("startBtn").appendChild(startBtn)
+document.getElementById("question").appendChild(questionText);
+document.getElementById("responses").appendChild(optionsText);
 
-//Answer options buttons
-
-function createbtn(text) {
-    var button = document.createElement("button");
-    button.innerHTML = text;
-    button.id = "btn";
-    document.getElementById("responses").appendChild(button);
+// Functions
+function start(){
+    i = 0;
+    score = 0;
+    buttonDiv = document.getElementById("btn");
+    if (buttonDiv.children.length == 0){
+        var ABtn = document.createElement("button");
+        ABtn.id = "A";
+        ABtn.innerHTML = "A";
+        document.getElementById("btn").appendChild(ABtn);
+        var BBtn = document.createElement("button");
+        BBtn.id = "B";
+        BBtn.innerHTML = "B";
+        document.getElementById("btn").appendChild(BBtn);
+        var CBtn = document.createElement("button");
+        CBtn.id = "C";
+        CBtn.innerHTML = "C";
+        document.getElementById("btn").appendChild(CBtn);
+        var DBtn = document.createElement("button");
+        DBtn.id = "D";
+        DBtn.innerHTML = "D";
+        document.getElementById("btn").appendChild(DBtn);
+    }
+    quiz()
+    timer()
 }
 
-function createQuestion(text) {
-    var question = document.createElement("text")
-    question.innerHTML = text;
-    question.id = "question";
-    document.getElementById("question").appendChild(question);
+function check(){
+    if (timeLeft == 0){
+        alert("Time ran out!")
+        i++
+        quiz()
+    }
+    var response = event.target.id;
+    if (response == questions[i].answer){
+        alert("Correct!");
+        score++;
+        i++;
+        quiz()
+    }
+    else {
+        alert("Incorrect!");
+        i++;
+        quiz()
+    }
 }
 
-// Main function to generate a new question or end game
-function newQuestion() {
-    var quizLength = questions.length;
-    var questionNum = 0;
+// Adds highscore and saves to local storage
+function addhighscore(name, score){
+    var highscore = document.createElement("div");
+    highscore.id = name;
+    highscore.className = "entry"
+    highscoreEntry = `${name} scored ${score}/${questions.length}`;
+    highscore.innerHTML = highscoreEntry;
+    document.getElementById("highscores").appendChild(highscore);
+    saveHighscore()
+}
 
-    // Clear previous content
-    if (document.hasChildNodes) {
-        document.getElementById("question").removeChild(baseText);
-    }   
-    document.getElementById("responses").removeChild(btn);
+// Save highscores
+function saveHighscore(){
+    highscoreCounter = localStorage.length;
+    localStorage.setItem(highscoreCounter, JSON.stringify(highscoreEntry));
+}
 
-    // Adding new content
-    if (questionNum < quizLength) {
-        // Replace the question 
-        var question = questions[questionNum];
-        createQuestion(question);
+// Load highscores
+var loadHighscore = function() {  
+    if (!localStorage) {
+      return false;
+    }
+    console.log("Saved highscores found!");
+    // loop through savedHighscore array
+    for (var i = 0; i < localStorage.length; i++) {
+        var highscore = document.createElement("div");
+        highscore.className = "entry";
+        savedHighscore = localStorage.getItem(localStorage.key(i)) ;
+        // add highscore to highscore section
+        savedHighscore = savedHighscore.replace(/['"]+/g, '');
+        highscore.innerHTML = savedHighscore;
+        document.getElementById("highscores").appendChild(highscore);
+    }
+};
 
-        // Replace the responses
-        var i = 0
-        while (i < 4) {
-            var response = responses[questionNum][i];
-            console.log(i)
-            createbtn(response);
-            i++;
+// Quiz question handler
+function quiz(){
+
+    if (i < questions.length){
+        questionText.innerHTML = questions[i].prompt;
+        optionsText.innerHTML = questions[i].options;
+        timeLeft = 60
+    }
+    else {
+        timeLeft = "Time"
+        alert("You scored " + score + "/" +questions.length);
+        var name = prompt("type in your name to save the score");
+        // only add highscore if user inputs name 
+        if (name != null){
+            addhighscore(name, score)
         }
     }
 }
 
-var questions = [
-    "What are variables used for in JavaScript?",
-    'What is the correct syntax for referring to an external script called " abc.js"?'
-];
+// Timer function
+function timer(){
+    if (timeLeft == NaN){
+        // Display string time (does not work displays NaN)
+        document.getElementById("timer").innerHTML("Time")
+    }
+    else {
+        timeLeft--;
+        time = document.getElementById("timer");
+        time.innerHTML = timeLeft;
+        if (timeLeft > 0){
+            setTimeout(timer, 1000);
+        };
+        if (timeLeft === 0){
+            check();
+        };
+    }
+};
 
-var responses = [
-    [
-        "Storing numbers, dates, or other values",
-        "Varying randomly",
-        "Causing high-school algebra flashbacks",
-        "None of the above",
-    ],
-    [
-        '<script href=" abc.js">',
-        '<script name=" abc.js">',
-        '<script src=" abc.js">',
-        'None of the above'
-    ]
-];
+// Event listners
+document.getElementById("btn").addEventListener("click", check);
+document.getElementById("startBtn").addEventListener("click", start);
 
-var answers = ["1"];
-
-// Event Listeners
-document.getElementById("btn").addEventListener("onclick", newQuestion());
+loadHighscore()
