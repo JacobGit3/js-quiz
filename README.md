@@ -43,3 +43,6 @@ https://pretagteam.com/question/remove-quotes-from-array-javascript
   
 Timer function
 https://codepen.io/joshua-golub/pen/LYYKrKg
+
+JavaScript multiple choice questions
+http://mcqspdfs.blogspot.com/2013/08/60-top-javascript-multiple-choice.html
