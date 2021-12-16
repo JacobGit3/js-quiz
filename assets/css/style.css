@@ -17,32 +17,34 @@ header {
     display: flex;
 }
 
-h2 {
+h2, a {
     font-size: 30px;
     display: flex;
     margin: 20px auto;
     padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .highScore {
     border: 5px var(--color1) solid;
     border-radius: 15px;
-    background-color: var(--color1);
-    color: var(--color4);
+    background-color: var(--color4);
+    color: var(--color1);
 }
 
 .timer {
     border: 5px var(--color1) solid;
     border-radius: 15px;
-    color: var(--color4);
-    background-color: var(--color1);
+    color: var(--color1);
+    background-color: var(--color4);
 }
 
 h1 {
     text-align: center;
-    font-size: 60px;
+    font-size: 80px;
     border-bottom: 10px solid var(--color1);
-    font-style: bold;
+    font-weight: bolder;
     color: var(--color1);
 }
 
@@ -51,7 +53,7 @@ h1 {
     font-size: 40px;
     color: var(--color1);
     margin: 20px;
-    font-style: bold;
+    font-weight: bold;
     border-bottom: var(--color1) 3px solid;
 }
 
@@ -85,9 +87,14 @@ button {
 }
 
 .startBtn {
-    font-size: 30px;
     width: 30%;
     margin: 0 auto;
+}
+
+.start {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
 }
 
 .highscores {
@@ -103,4 +110,10 @@ button {
     font-size: 40px;
     border-bottom: var(--color1) 3px solid;
     margin: 20px;
+    font-weight: bold;
+}
+
+.entry {
+    margin: 10px;
+    text-align: center;
 }
